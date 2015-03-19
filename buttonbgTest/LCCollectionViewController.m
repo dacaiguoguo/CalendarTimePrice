@@ -18,6 +18,12 @@
 NSString * const MSCollectionElementKindDayColumnHeader = @"MSCollectionElementKindDayHeader";
 NSString * const MSDayColumnHeaderReuseIdentifier = @"MSDayColumnHeaderReuseIdentifier";
 NSString * const MSDayColumnFooterReuseIdentifier = @"MSDayColumnFooterReuseIdentifier";
+//字体颜色
+NSString *const cTextBlack_Color = @"00000064"; //一号字体黑色 0,0,0
+NSString *const cTextDarkGray_Color = @"66666664"; //二号字体黑灰色 102,102,102
+NSString *const cTextLightGray_Color = @"aaaaaa64"; //三号字体灰色 170,170,170
+NSString *const cTextWhite_Color = @"ffffff64"; //四号字体白色 255,255,255
+NSString *const cTextRed_Color = @"d3077564"; //价格字体红色 211,7,117
 
 @implementation TimePrice
 + (TimePrice *)parseTimePriceJson:(NSDictionary *)jsonDictionary {
@@ -50,6 +56,8 @@ NSString * const MSDayColumnFooterReuseIdentifier = @"MSDayColumnFooterReuseIden
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.backgroundColor = [UIColor whiteColor];
+//        self.layer.borderWidth = 1;
         self.title = [UILabel new];
         self.title.numberOfLines = 0;
         self.title.backgroundColor = [UIColor clearColor];
@@ -103,14 +111,39 @@ NSString * const MSDayColumnFooterReuseIdentifier = @"MSDayColumnFooterReuseIden
     NSInteger  firstWeekDay;
     float minPrice;
     NSArray *weekdays;
+    NSIndexPath *selectedPath;
 
 }
 static NSString * const reuseIdentifier = @"CellReuseIdentifier";
 
++ (UIColor *)hexColor:(NSString *)hexColor {
+    if ([hexColor hasPrefix:@"#"]) {
+        hexColor = [hexColor substringFromIndex:1];
+    }
+    if ([hexColor length] == 6) {
+        hexColor = [hexColor stringByAppendingString:@"64"];
+    }
+    unsigned int red, green, blue, alpha;
+    NSRange range;
+    range.length = 2;
+    
+    range.location = 0;
+    [[NSScanner scannerWithString:[hexColor substringWithRange:range]] scanHexInt:&red];
+    range.location = 2;
+    [[NSScanner scannerWithString:[hexColor substringWithRange:range]] scanHexInt:&green];
+    range.location = 4;
+    [[NSScanner scannerWithString:[hexColor substringWithRange:range]] scanHexInt:&blue];
+    range.location = 6;
+    [[NSScanner scannerWithString:[hexColor substringWithRange:range]] scanHexInt:&alpha];
+    
+    return [UIColor colorWithRed:(float)(red/255.0f) green:(float)(green/255.0f) blue:(float)(blue/255.0f) alpha:(float)(alpha/100.0f)];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     weekdays = @[@"日",@"一",@"二",@"三",@"四",@"五",@"六"];
-
+    self.collectionView.contentInset = UIEdgeInsetsMake(20, 0, 50, 0);
+    [self.collectionView setShowsVerticalScrollIndicator:NO];
     // Uncomment the following line to preserve selection between presentations
     // self.clearsSelectionOnViewWillAppear = NO;
     NSData *startJsonData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"test" ofType:@"json"]];
@@ -171,91 +204,107 @@ static NSString * const reuseIdentifier = @"CellReuseIdentifier";
     float lastBlock = [self.currentMonth numDaysInMonth]+(firstWeekDay-1);
     return ceilf(lastBlock/7);
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (NSString *)formatIndexPath:(NSIndexPath *)indexPath {
+    return [NSString stringWithFormat:@"{%ld,%ld}", (long)indexPath.row, (long)indexPath.section];
 }
-*/
+
 
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 10;
+    return 2;
 }
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [self numRows]*7+7;
+    return [self numRows]*7+8;
+}
+
+- (BOOL)isContain:(NSDate*)dateTemp
+{
+    LVLog(@"%@ ==== %d",dateTemp ,[self.markedDatesSet containsObject:dateTemp] );
+    return [self.markedDatesSet containsObject:dateTemp];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MSEventCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
 
     if (indexPath.row < 8) {
+        cell.backgroundColor = [UIColor whiteColor];
         if (indexPath.row == 0) {
             cell.title.text = [NSString stringWithFormat:@"%d年%d月",(int)[self.currentMonth year],(int)[self.currentMonth month]];
             cell.location.text = nil;
-            cell.title.textColor = [UIColor blackColor];
+            cell.title.textColor = [LCCollectionViewController hexColor:cTextBlack_Color];
         } else {
             cell.title.text = weekdays[indexPath.row-1];
             cell.location.text = nil;
             if (indexPath.row ==1||indexPath.row ==7) {
-                cell.title.textColor = [UIColor redColor];
+                cell.title.textColor =[LCCollectionViewController hexColor:cTextRed_Color];
             } else {
-                cell.title.textColor = [UIColor blackColor];
+                cell.title.textColor = [LCCollectionViewController hexColor:cTextBlack_Color];
             }
         }
         return cell;
 
     }
     float lastBlock = [self.currentMonth numDaysInMonth]+([self.currentMonth firstWeekDayInMonth]-1);
-
     NSInteger targetDate = indexPath.row-8+1;
 
-    cell.title.text = [NSString stringWithFormat:@"%zd",targetDate];
+    if (targetDate <= lastBlock) {
+        cell.title.text = [NSString stringWithFormat:@"%zd",targetDate];
+        
+        BOOL isSelectedPath = selectedPath && [selectedPath compare:indexPath] == NSOrderedSame;
+        
 
-
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents *comps = [gregorian components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:self.currentMonth];
-    [comps setDay:targetDate];
-    NSDate *dateTemp = [gregorian dateFromComponents:comps];
-    
-    if ([self.markedDatesSet containsObject:dateTemp]) {
-        if (targetDate %7 ==1||targetDate %7 ==0) {
-            cell.title.textColor = [UIColor redColor];
+        NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        NSDateComponents *comps = [gregorian components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:self.currentMonth];
+        [comps setDay:targetDate];
+        NSDate *dateTemp = [gregorian dateFromComponents:comps];
+        LVLog(@"%ld----%@",(long)targetDate,dateTemp);
+        if ([self isContain:dateTemp]) {
+            int index = (int)[self.markedDates indexOfObject:dateTemp];
+            TimePrice * tem  = [mutArray objectAtIndex:index];
+            cell.backgroundColor = [UIColor whiteColor];
+            if (targetDate %7 ==1||targetDate %7 ==0) {
+                cell.title.textColor =[LCCollectionViewController hexColor:cTextRed_Color];
+            } else {
+                if (todayBlock == targetDate) {
+                    cell.title.textColor =[LCCollectionViewController hexColor:cTextRed_Color];
+                    cell.title.text = @"今天";
+                } else if (todayBlock+1 == targetDate) {
+                    cell.title.textColor = [LCCollectionViewController hexColor:cTextRed_Color];
+                    cell.title.text = @"明天";
+                } else if (todayBlock+2 == targetDate) {
+                    cell.title.textColor =[LCCollectionViewController hexColor:cTextRed_Color];
+                    cell.title.text = @"后天";
+                } else {
+                    cell.title.textColor =[LCCollectionViewController hexColor:cTextBlack_Color];
+                }
+            }
+            if (tem.sellPrice == minPrice) {
+                cell.location.textColor =[LCCollectionViewController hexColor:cTextRed_Color];
+            } else {
+                cell.location.textColor = [LCCollectionViewController hexColor:cTextBlack_Color];
+            }
+            if (isSelectedPath) {
+                cell.backgroundColor =[LCCollectionViewController hexColor:cTextRed_Color];
+                cell.location.textColor = [UIColor whiteColor];
+                cell.title.textColor = [UIColor whiteColor];
+            }
+            cell.location.text =  [self.markedLabels objectAtIndex:index];
         } else {
-            cell.title.textColor = [UIColor blackColor];
+            //        LVLog(@"dacaiguoguo:\n%s\n%@",__func__,[self formatIndexPath:indexPath]);
+            cell.backgroundColor = [UIColor whiteColor];
+            cell.title.textColor = [LCCollectionViewController hexColor:cTextLightGray_Color];
+            cell.location.text = nil;
         }
-        int index = (int)[self.markedDates indexOfObject:dateTemp];
-        TimePrice * tem  = [mutArray objectAtIndex:index];
-        if (tem.sellPrice == minPrice) {
-            cell.location.textColor = [UIColor redColor];
-        } else {
-            cell.location.textColor = [UIColor blackColor];
-        }
-        cell.location.text =  [self.markedLabels objectAtIndex:index];
     } else {
-        cell.title.textColor = [UIColor lightGrayColor];
-        cell.location.text = nil;
-    }
-    if (todayBlock == targetDate) {
-        cell.title.textColor = [UIColor redColor];
-        cell.title.text = @"今天";
-    } else if (todayBlock+1 == targetDate) {
-        cell.title.textColor = [UIColor redColor];
-        cell.title.text = @"明天";
-    } else if (todayBlock+2 == targetDate) {
-        cell.title.textColor = [UIColor redColor];
-        cell.title.text = @"后天";
-    }
-    if (targetDate > lastBlock) {
+        cell.backgroundColor = [UIColor whiteColor];
         cell.title.text = nil;
         cell.location.text = nil;
     }
+
     return cell;
 }
 
@@ -267,7 +316,7 @@ static NSString * const reuseIdentifier = @"CellReuseIdentifier";
         view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:MSDayColumnHeaderReuseIdentifier forIndexPath:indexPath];
     } else if(kind == UICollectionElementKindSectionFooter){
         view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:MSDayColumnFooterReuseIdentifier forIndexPath:indexPath];
-        view.backgroundColor = [UIColor lightGrayColor];
+        view.backgroundColor = [LCCollectionViewController hexColor:cTextLightGray_Color];
     }
     return view;
 }
@@ -280,5 +329,15 @@ static NSString * const reuseIdentifier = @"CellReuseIdentifier";
     cellSize.width = [[UIScreen mainScreen] bounds].size.width/7;
     cellSize.height = cellSize.width;
     return cellSize;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
+{
+    MSEventCell *cell =  (MSEventCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    if (cell.location.text.length < 1) {
+        return;
+    }
+    selectedPath = indexPath;
+    [collectionView reloadData];
 }
 @end
