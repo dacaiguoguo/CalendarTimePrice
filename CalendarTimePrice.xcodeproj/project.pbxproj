@@ -1,0 +1,481 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F2818D001ABAB58A00C61BBA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2818CFF1ABAB58A00C61BBA /* main.m */; };
+		F2818D061ABAB58A00C61BBA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2818D051ABAB58A00C61BBA /* ViewController.m */; };
+		F2818D0B1ABAB58A00C61BBA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2818D0A1ABAB58A00C61BBA /* Images.xcassets */; };
+		F2818D0E1ABAB58A00C61BBA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2818D0C1ABAB58A00C61BBA /* LaunchScreen.xib */; };
+		F2818D1A1ABAB58A00C61BBA /* CalendarTimePriceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2818D191ABAB58A00C61BBA /* CalendarTimePriceTests.m */; };
+		F2818D361ABAB5B900C61BBA /* cashRechargeSel.png in Resources */ = {isa = PBXBuildFile; fileRef = F2818D251ABAB5B900C61BBA /* cashRechargeSel.png */; };
+		F2818D371ABAB5B900C61BBA /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2818D271ABAB5B900C61BBA /* FirstViewController.m */; };
+		F2818D381ABAB5B900C61BBA /* greyButton700@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2818D281ABAB5B900C61BBA /* greyButton700@2x.png */; };
+		F2818D391ABAB5B900C61BBA /* greyButton700@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2818D291ABAB5B900C61BBA /* greyButton700@3x.png */; };
+		F2818D3A1ABAB5B900C61BBA /* LCCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2818D2B1ABAB5B900C61BBA /* LCCollectionViewController.m */; };
+		F2818D3B1ABAB5B900C61BBA /* NSDate+convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = F2818D2D1ABAB5B900C61BBA /* NSDate+convenience.m */; };
+		F2818D3C1ABAB5B900C61BBA /* NSMutableArray+convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = F2818D2F1ABAB5B900C61BBA /* NSMutableArray+convenience.m */; };
+		F2818D3D1ABAB5B900C61BBA /* redButton700@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2818D301ABAB5B900C61BBA /* redButton700@2x.png */; };
+		F2818D3E1ABAB5B900C61BBA /* redButton700@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2818D311ABAB5B900C61BBA /* redButton700@3x.png */; };
+		F2818D3F1ABAB5B900C61BBA /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = F2818D321ABAB5B900C61BBA /* test.json */; };
+		F2818D401ABAB5B900C61BBA /* UIView+AutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F2818D341ABAB5B900C61BBA /* UIView+AutoLayout.m */; };
+		F2818D431ABAB5CA00C61BBA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2818D421ABAB5CA00C61BBA /* AppDelegate.m */; };
+		F2818D451ABAB70400C61BBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2818D441ABAB70400C61BBA /* Main.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F2818D141ABAB58A00C61BBA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F2818CF21ABAB58A00C61BBA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F2818CF91ABAB58A00C61BBA;
+			remoteInfo = CalendarTimePrice;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F2818CFA1ABAB58A00C61BBA /* CalendarTimePrice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalendarTimePrice.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2818CFE1ABAB58A00C61BBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2818CFF1ABAB58A00C61BBA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F2818D041ABAB58A00C61BBA /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		F2818D051ABAB58A00C61BBA /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		F2818D0A1ABAB58A00C61BBA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F2818D0D1ABAB58A00C61BBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		F2818D131ABAB58A00C61BBA /* CalendarTimePriceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalendarTimePriceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2818D181ABAB58A00C61BBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2818D191ABAB58A00C61BBA /* CalendarTimePriceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarTimePriceTests.m; sourceTree = "<group>"; };
+		F2818D251ABAB5B900C61BBA /* cashRechargeSel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cashRechargeSel.png; sourceTree = "<group>"; };
+		F2818D261ABAB5B900C61BBA /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		F2818D271ABAB5B900C61BBA /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		F2818D281ABAB5B900C61BBA /* greyButton700@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "greyButton700@2x.png"; sourceTree = "<group>"; };
+		F2818D291ABAB5B900C61BBA /* greyButton700@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "greyButton700@3x.png"; sourceTree = "<group>"; };
+		F2818D2A1ABAB5B900C61BBA /* LCCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCCollectionViewController.h; sourceTree = "<group>"; };
+		F2818D2B1ABAB5B900C61BBA /* LCCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCCollectionViewController.m; sourceTree = "<group>"; };
+		F2818D2C1ABAB5B900C61BBA /* NSDate+convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+convenience.h"; sourceTree = "<group>"; };
+		F2818D2D1ABAB5B900C61BBA /* NSDate+convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+convenience.m"; sourceTree = "<group>"; };
+		F2818D2E1ABAB5B900C61BBA /* NSMutableArray+convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+convenience.h"; sourceTree = "<group>"; };
+		F2818D2F1ABAB5B900C61BBA /* NSMutableArray+convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+convenience.m"; sourceTree = "<group>"; };
+		F2818D301ABAB5B900C61BBA /* redButton700@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redButton700@2x.png"; sourceTree = "<group>"; };
+		F2818D311ABAB5B900C61BBA /* redButton700@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redButton700@3x.png"; sourceTree = "<group>"; };
+		F2818D321ABAB5B900C61BBA /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
+		F2818D331ABAB5B900C61BBA /* UIView+AutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AutoLayout.h"; sourceTree = "<group>"; };
+		F2818D341ABAB5B900C61BBA /* UIView+AutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AutoLayout.m"; sourceTree = "<group>"; };
+		F2818D411ABAB5CA00C61BBA /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		F2818D421ABAB5CA00C61BBA /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F2818D441ABAB70400C61BBA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F2818CF71ABAB58A00C61BBA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2818D101ABAB58A00C61BBA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F2818CF11ABAB58A00C61BBA = {
+			isa = PBXGroup;
+			children = (
+				F2818CFC1ABAB58A00C61BBA /* CalendarTimePrice */,
+				F2818D161ABAB58A00C61BBA /* CalendarTimePriceTests */,
+				F2818CFB1ABAB58A00C61BBA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F2818CFB1ABAB58A00C61BBA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F2818CFA1ABAB58A00C61BBA /* CalendarTimePrice.app */,
+				F2818D131ABAB58A00C61BBA /* CalendarTimePriceTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F2818CFC1ABAB58A00C61BBA /* CalendarTimePrice */ = {
+			isa = PBXGroup;
+			children = (
+				F2818D411ABAB5CA00C61BBA /* AppDelegate.h */,
+				F2818D421ABAB5CA00C61BBA /* AppDelegate.m */,
+				F2818D041ABAB58A00C61BBA /* ViewController.h */,
+				F2818D051ABAB58A00C61BBA /* ViewController.m */,
+				F2818D251ABAB5B900C61BBA /* cashRechargeSel.png */,
+				F2818D261ABAB5B900C61BBA /* FirstViewController.h */,
+				F2818D271ABAB5B900C61BBA /* FirstViewController.m */,
+				F2818D281ABAB5B900C61BBA /* greyButton700@2x.png */,
+				F2818D291ABAB5B900C61BBA /* greyButton700@3x.png */,
+				F2818D2A1ABAB5B900C61BBA /* LCCollectionViewController.h */,
+				F2818D2B1ABAB5B900C61BBA /* LCCollectionViewController.m */,
+				F2818D2C1ABAB5B900C61BBA /* NSDate+convenience.h */,
+				F2818D2D1ABAB5B900C61BBA /* NSDate+convenience.m */,
+				F2818D2E1ABAB5B900C61BBA /* NSMutableArray+convenience.h */,
+				F2818D2F1ABAB5B900C61BBA /* NSMutableArray+convenience.m */,
+				F2818D301ABAB5B900C61BBA /* redButton700@2x.png */,
+				F2818D311ABAB5B900C61BBA /* redButton700@3x.png */,
+				F2818D321ABAB5B900C61BBA /* test.json */,
+				F2818D331ABAB5B900C61BBA /* UIView+AutoLayout.h */,
+				F2818D341ABAB5B900C61BBA /* UIView+AutoLayout.m */,
+				F2818D441ABAB70400C61BBA /* Main.storyboard */,
+				F2818D0A1ABAB58A00C61BBA /* Images.xcassets */,
+				F2818D0C1ABAB58A00C61BBA /* LaunchScreen.xib */,
+				F2818CFD1ABAB58A00C61BBA /* Supporting Files */,
+			);
+			path = CalendarTimePrice;
+			sourceTree = "<group>";
+		};
+		F2818CFD1ABAB58A00C61BBA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F2818CFE1ABAB58A00C61BBA /* Info.plist */,
+				F2818CFF1ABAB58A00C61BBA /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F2818D161ABAB58A00C61BBA /* CalendarTimePriceTests */ = {
+			isa = PBXGroup;
+			children = (
+				F2818D191ABAB58A00C61BBA /* CalendarTimePriceTests.m */,
+				F2818D171ABAB58A00C61BBA /* Supporting Files */,
+			);
+			path = CalendarTimePriceTests;
+			sourceTree = "<group>";
+		};
+		F2818D171ABAB58A00C61BBA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F2818D181ABAB58A00C61BBA /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F2818CF91ABAB58A00C61BBA /* CalendarTimePrice */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F2818D1D1ABAB58A00C61BBA /* Build configuration list for PBXNativeTarget "CalendarTimePrice" */;
+			buildPhases = (
+				F2818CF61ABAB58A00C61BBA /* Sources */,
+				F2818CF71ABAB58A00C61BBA /* Frameworks */,
+				F2818CF81ABAB58A00C61BBA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CalendarTimePrice;
+			productName = CalendarTimePrice;
+			productReference = F2818CFA1ABAB58A00C61BBA /* CalendarTimePrice.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F2818D121ABAB58A00C61BBA /* CalendarTimePriceTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F2818D201ABAB58A00C61BBA /* Build configuration list for PBXNativeTarget "CalendarTimePriceTests" */;
+			buildPhases = (
+				F2818D0F1ABAB58A00C61BBA /* Sources */,
+				F2818D101ABAB58A00C61BBA /* Frameworks */,
+				F2818D111ABAB58A00C61BBA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F2818D151ABAB58A00C61BBA /* PBXTargetDependency */,
+			);
+			name = CalendarTimePriceTests;
+			productName = CalendarTimePriceTests;
+			productReference = F2818D131ABAB58A00C61BBA /* CalendarTimePriceTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F2818CF21ABAB58A00C61BBA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = dacaiguo;
+				TargetAttributes = {
+					F2818CF91ABAB58A00C61BBA = {
+						CreatedOnToolsVersion = 6.3;
+					};
+					F2818D121ABAB58A00C61BBA = {
+						CreatedOnToolsVersion = 6.3;
+						TestTargetID = F2818CF91ABAB58A00C61BBA;
+					};
+				};
+			};
+			buildConfigurationList = F2818CF51ABAB58A00C61BBA /* Build configuration list for PBXProject "CalendarTimePrice" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F2818CF11ABAB58A00C61BBA;
+			productRefGroup = F2818CFB1ABAB58A00C61BBA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F2818CF91ABAB58A00C61BBA /* CalendarTimePrice */,
+				F2818D121ABAB58A00C61BBA /* CalendarTimePriceTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F2818CF81ABAB58A00C61BBA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2818D391ABAB5B900C61BBA /* greyButton700@3x.png in Resources */,
+				F2818D3D1ABAB5B900C61BBA /* redButton700@2x.png in Resources */,
+				F2818D0E1ABAB58A00C61BBA /* LaunchScreen.xib in Resources */,
+				F2818D381ABAB5B900C61BBA /* greyButton700@2x.png in Resources */,
+				F2818D361ABAB5B900C61BBA /* cashRechargeSel.png in Resources */,
+				F2818D0B1ABAB58A00C61BBA /* Images.xcassets in Resources */,
+				F2818D451ABAB70400C61BBA /* Main.storyboard in Resources */,
+				F2818D3E1ABAB5B900C61BBA /* redButton700@3x.png in Resources */,
+				F2818D3F1ABAB5B900C61BBA /* test.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2818D111ABAB58A00C61BBA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F2818CF61ABAB58A00C61BBA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2818D3B1ABAB5B900C61BBA /* NSDate+convenience.m in Sources */,
+				F2818D3C1ABAB5B900C61BBA /* NSMutableArray+convenience.m in Sources */,
+				F2818D431ABAB5CA00C61BBA /* AppDelegate.m in Sources */,
+				F2818D061ABAB58A00C61BBA /* ViewController.m in Sources */,
+				F2818D401ABAB5B900C61BBA /* UIView+AutoLayout.m in Sources */,
+				F2818D371ABAB5B900C61BBA /* FirstViewController.m in Sources */,
+				F2818D001ABAB58A00C61BBA /* main.m in Sources */,
+				F2818D3A1ABAB5B900C61BBA /* LCCollectionViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2818D0F1ABAB58A00C61BBA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2818D1A1ABAB58A00C61BBA /* CalendarTimePriceTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F2818D151ABAB58A00C61BBA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F2818CF91ABAB58A00C61BBA /* CalendarTimePrice */;
+			targetProxy = F2818D141ABAB58A00C61BBA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F2818D0C1ABAB58A00C61BBA /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F2818D0D1ABAB58A00C61BBA /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F2818D1B1ABAB58A00C61BBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		F2818D1C1ABAB58A00C61BBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F2818D1E1ABAB58A00C61BBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = CalendarTimePrice/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F2818D1F1ABAB58A00C61BBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = CalendarTimePrice/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F2818D211ABAB58A00C61BBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CalendarTimePriceTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CalendarTimePrice.app/CalendarTimePrice";
+			};
+			name = Debug;
+		};
+		F2818D221ABAB58A00C61BBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CalendarTimePriceTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CalendarTimePrice.app/CalendarTimePrice";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F2818CF51ABAB58A00C61BBA /* Build configuration list for PBXProject "CalendarTimePrice" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2818D1B1ABAB58A00C61BBA /* Debug */,
+				F2818D1C1ABAB58A00C61BBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F2818D1D1ABAB58A00C61BBA /* Build configuration list for PBXNativeTarget "CalendarTimePrice" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2818D1E1ABAB58A00C61BBA /* Debug */,
+				F2818D1F1ABAB58A00C61BBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F2818D201ABAB58A00C61BBA /* Build configuration list for PBXNativeTarget "CalendarTimePriceTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2818D211ABAB58A00C61BBA /* Debug */,
+				F2818D221ABAB58A00C61BBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F2818CF21ABAB58A00C61BBA /* Project object */;
+}
