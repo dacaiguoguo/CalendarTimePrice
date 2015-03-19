@@ -14,7 +14,7 @@
 		F2818D361ABAB5B900C61BBA /* cashRechargeSel.png in Resources */ = {isa = PBXBuildFile; fileRef = F2818D251ABAB5B900C61BBA /* cashRechargeSel.png */; };
 		F2818D381ABAB5B900C61BBA /* greyButton700@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2818D281ABAB5B900C61BBA /* greyButton700@2x.png */; };
 		F2818D391ABAB5B900C61BBA /* greyButton700@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2818D291ABAB5B900C61BBA /* greyButton700@3x.png */; };
-		F2818D3A1ABAB5B900C61BBA /* LCCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2818D2B1ABAB5B900C61BBA /* LCCollectionViewController.m */; };
+		F2818D3A1ABAB5B900C61BBA /* LVCalendarCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2818D2B1ABAB5B900C61BBA /* LVCalendarCollectionController.m */; };
 		F2818D3B1ABAB5B900C61BBA /* NSDate+convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = F2818D2D1ABAB5B900C61BBA /* NSDate+convenience.m */; };
 		F2818D3C1ABAB5B900C61BBA /* NSMutableArray+convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = F2818D2F1ABAB5B900C61BBA /* NSMutableArray+convenience.m */; };
 		F2818D3D1ABAB5B900C61BBA /* redButton700@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2818D301ABAB5B900C61BBA /* redButton700@2x.png */; };
@@ -47,8 +47,8 @@
 		F2818D251ABAB5B900C61BBA /* cashRechargeSel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cashRechargeSel.png; sourceTree = "<group>"; };
 		F2818D281ABAB5B900C61BBA /* greyButton700@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "greyButton700@2x.png"; sourceTree = "<group>"; };
 		F2818D291ABAB5B900C61BBA /* greyButton700@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "greyButton700@3x.png"; sourceTree = "<group>"; };
-		F2818D2A1ABAB5B900C61BBA /* LCCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCCollectionViewController.h; sourceTree = "<group>"; };
-		F2818D2B1ABAB5B900C61BBA /* LCCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCCollectionViewController.m; sourceTree = "<group>"; };
+		F2818D2A1ABAB5B900C61BBA /* LVCalendarCollectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LVCalendarCollectionController.h; sourceTree = "<group>"; };
+		F2818D2B1ABAB5B900C61BBA /* LVCalendarCollectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LVCalendarCollectionController.m; sourceTree = "<group>"; };
 		F2818D2C1ABAB5B900C61BBA /* NSDate+convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+convenience.h"; sourceTree = "<group>"; };
 		F2818D2D1ABAB5B900C61BBA /* NSDate+convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+convenience.m"; sourceTree = "<group>"; };
 		F2818D2E1ABAB5B900C61BBA /* NSMutableArray+convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+convenience.h"; sourceTree = "<group>"; };
@@ -107,8 +107,8 @@
 				F2818D251ABAB5B900C61BBA /* cashRechargeSel.png */,
 				F2818D281ABAB5B900C61BBA /* greyButton700@2x.png */,
 				F2818D291ABAB5B900C61BBA /* greyButton700@3x.png */,
-				F2818D2A1ABAB5B900C61BBA /* LCCollectionViewController.h */,
-				F2818D2B1ABAB5B900C61BBA /* LCCollectionViewController.m */,
+				F2818D2A1ABAB5B900C61BBA /* LVCalendarCollectionController.h */,
+				F2818D2B1ABAB5B900C61BBA /* LVCalendarCollectionController.m */,
 				F2818D2C1ABAB5B900C61BBA /* NSDate+convenience.h */,
 				F2818D2D1ABAB5B900C61BBA /* NSDate+convenience.m */,
 				F2818D2E1ABAB5B900C61BBA /* NSMutableArray+convenience.h */,
@@ -264,7 +264,7 @@
 				F2818D431ABAB5CA00C61BBA /* AppDelegate.m in Sources */,
 				F2818D401ABAB5B900C61BBA /* UIView+AutoLayout.m in Sources */,
 				F2818D001ABAB58A00C61BBA /* main.m in Sources */,
-				F2818D3A1ABAB5B900C61BBA /* LCCollectionViewController.m in Sources */,
+				F2818D3A1ABAB5B900C61BBA /* LVCalendarCollectionController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

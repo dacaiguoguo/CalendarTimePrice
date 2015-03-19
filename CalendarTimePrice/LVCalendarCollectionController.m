@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 dacaiguo. All rights reserved.
 //
 
-#import "LCCollectionViewController.h"
+#import "LVCalendarCollectionController.h"
 #import "UIView+AutoLayout.h"
 #import "NSDate+convenience.h"
 #import "AppDelegate.h"
@@ -55,7 +55,7 @@ NSString *const cMainWhite_Color = @"ffffff64"; //主色调白色 255,255,255
 }
 @end
 
-@implementation MSEventCell
+@implementation LVCalendarViewCell
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -63,22 +63,22 @@ NSString *const cMainWhite_Color = @"ffffff64"; //主色调白色 255,255,255
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
 //        self.layer.borderWidth = 1;
-        self.title = [UILabel new];
-        self.title.numberOfLines = 0;
-        self.title.backgroundColor = [UIColor clearColor];
-        self.title.textAlignment = NSTextAlignmentCenter;
-        self.location.font = [UIFont systemFontOfSize:13];
-        [self.contentView addSubview:self.title];
+        self.dayLabel = [UILabel new];
+        self.dayLabel.numberOfLines = 0;
+        self.dayLabel.backgroundColor = [UIColor clearColor];
+        self.dayLabel.textAlignment = NSTextAlignmentCenter;
+        self.priceLabel.font = [UIFont systemFontOfSize:13];
+        [self.contentView addSubview:self.dayLabel];
         
-        self.location = [UILabel new];
-        self.location.numberOfLines = 0;
-        self.location.backgroundColor = [UIColor clearColor];
-        self.location.font = [UIFont systemFontOfSize:12];
-        self.location.textAlignment = NSTextAlignmentCenter;
-        [self.contentView addSubview:self.location];
-        [self.title autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero ];
-        [self.location autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero excludingEdge:ALEdgeTop];
-        [self.location autoSetDimension:ALDimensionHeight toSize:20];
+        self.priceLabel = [UILabel new];
+        self.priceLabel.numberOfLines = 0;
+        self.priceLabel.backgroundColor = [UIColor clearColor];
+        self.priceLabel.font = [UIFont systemFontOfSize:12];
+        self.priceLabel.textAlignment = NSTextAlignmentCenter;
+        [self.contentView addSubview:self.priceLabel];
+        [self.dayLabel autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero ];
+        [self.priceLabel autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero excludingEdge:ALEdgeTop];
+        [self.priceLabel autoSetDimension:ALDimensionHeight toSize:20];
 
     }
     return self;
@@ -86,7 +86,7 @@ NSString *const cMainWhite_Color = @"ffffff64"; //主色调白色 255,255,255
 
 @end
 
-@implementation MSDayColumnHeader
+@implementation LVCalendarSectionHeader
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -99,7 +99,7 @@ NSString *const cMainWhite_Color = @"ffffff64"; //主色调白色 255,255,255
 
 
 @end
-@interface LCCollectionViewController ()
+@interface LVCalendarCollectionController ()
 @property (nonatomic, retain) NSDate *currentMonth;
 @property (nonatomic, retain, getter = selectedDate) NSDate *selectedDate;
 @property (nonatomic, retain, getter = nearDate) NSDate *nearDate;
@@ -109,7 +109,7 @@ NSString *const cMainWhite_Color = @"ffffff64"; //主色调白色 255,255,255
 
 @end
 
-@implementation LCCollectionViewController
+@implementation LVCalendarCollectionController
 {
     NSMutableArray *mutArray;
     NSInteger  todayBlock;
@@ -119,7 +119,7 @@ NSString *const cMainWhite_Color = @"ffffff64"; //主色调白色 255,255,255
     NSIndexPath *selectedPath;
     NSCalendar *gregorian;
 }
-static NSString * const reuseIdentifier = @"CellReuseIdentifier";
+static NSString * const reuseIdentifier = @"CellReuseIdentifier2";
 
 
 
@@ -183,9 +183,9 @@ static NSString * const reuseIdentifier = @"CellReuseIdentifier";
     [self markDates:mutDateArray labels:mutPriceArray];
     [self reset];
     // Register cell classes
-    [self.collectionView registerClass:[MSEventCell class] forCellWithReuseIdentifier:reuseIdentifier];
-    [self.collectionView registerClass:MSDayColumnHeader.class forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:MSDayColumnHeaderReuseIdentifier];
-    [self.collectionView registerClass:MSDayColumnHeader.class forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:MSDayColumnFooterReuseIdentifier];
+    [self.collectionView registerClass:[LVCalendarViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
+    [self.collectionView registerClass:LVCalendarSectionHeader.class forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:MSDayColumnHeaderReuseIdentifier];
+    [self.collectionView registerClass:LVCalendarSectionHeader.class forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:MSDayColumnFooterReuseIdentifier];
 }
 
 //从NSDate 显示  年。。月。。日
@@ -256,22 +256,22 @@ static NSString * const reuseIdentifier = @"CellReuseIdentifier";
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    MSEventCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    LVCalendarViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     NSInteger section = indexPath.section;
     NSDate *sectionMonth = [self currentMonthAddSection:section];
     if (indexPath.row < 8) {
         cell.backgroundColor = [UIColor whiteColor];
         if (indexPath.row == 0) {
-            cell.title.text = [NSString stringWithFormat:@"%d年%d月",(int)[sectionMonth year],(int)[sectionMonth month]];
-            cell.location.text = nil;
-            cell.title.textColor = [LCCollectionViewController hexColor:cTextBlack_Color];
+            cell.dayLabel.text = [NSString stringWithFormat:@"%d年%d月",(int)[sectionMonth year],(int)[sectionMonth month]];
+            cell.priceLabel.text = nil;
+            cell.dayLabel.textColor = [LVCalendarCollectionController hexColor:cTextBlack_Color];
         } else {
-            cell.title.text = weekdays[indexPath.row-1];
-            cell.location.text = nil;
+            cell.dayLabel.text = weekdays[indexPath.row-1];
+            cell.priceLabel.text = nil;
             if (indexPath.row ==1||indexPath.row ==7) {
-                cell.title.textColor =[LCCollectionViewController hexColor:cTextRed_Color];
+                cell.dayLabel.textColor =[LVCalendarCollectionController hexColor:cTextRed_Color];
             } else {
-                cell.title.textColor = [LCCollectionViewController hexColor:cTextBlack_Color];
+                cell.dayLabel.textColor = [LVCalendarCollectionController hexColor:cTextBlack_Color];
             }
         }
         return cell;
@@ -282,7 +282,7 @@ static NSString * const reuseIdentifier = @"CellReuseIdentifier";
     NSInteger targetDate = indexPath.row-8+1-firstWeekDayInMonth;
 
     if (targetDate > 0 && targetDate <= numDaysInMonth) {
-        cell.title.text = [NSString stringWithFormat:@"%zd",targetDate];
+        cell.dayLabel.text = [NSString stringWithFormat:@"%zd",targetDate];
         BOOL isSelectedPath = selectedPath && [selectedPath compare:indexPath] == NSOrderedSame;
         NSDateComponents *comps = [gregorian components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:sectionMonth];
         [comps setDay:targetDate];
@@ -293,41 +293,41 @@ static NSString * const reuseIdentifier = @"CellReuseIdentifier";
             TimePrice * tem  = [mutArray objectAtIndex:index];
             cell.backgroundColor = [UIColor whiteColor];
             if (indexPath.row %7 ==1||indexPath.row %7 ==0) {
-                cell.title.textColor =[LCCollectionViewController hexColor:cTextRed_Color];
+                cell.dayLabel.textColor =[LVCalendarCollectionController hexColor:cTextRed_Color];
             } else {
                 if (todayBlock == targetDate) {
-                    cell.title.textColor =[LCCollectionViewController hexColor:cTextRed_Color];
-                    cell.title.text = @"今天";
+                    cell.dayLabel.textColor =[LVCalendarCollectionController hexColor:cTextRed_Color];
+                    cell.dayLabel.text = @"今天";
                 } else if (todayBlock+1 == targetDate) {
-                    cell.title.textColor = [LCCollectionViewController hexColor:cTextRed_Color];
-                    cell.title.text = @"明天";
+                    cell.dayLabel.textColor = [LVCalendarCollectionController hexColor:cTextRed_Color];
+                    cell.dayLabel.text = @"明天";
                 } else if (todayBlock+2 == targetDate) {
-                    cell.title.textColor =[LCCollectionViewController hexColor:cTextRed_Color];
-                    cell.title.text = @"后天";
+                    cell.dayLabel.textColor =[LVCalendarCollectionController hexColor:cTextRed_Color];
+                    cell.dayLabel.text = @"后天";
                 } else {
-                    cell.title.textColor =[LCCollectionViewController hexColor:cTextBlack_Color];
+                    cell.dayLabel.textColor =[LVCalendarCollectionController hexColor:cTextBlack_Color];
                 }
             }
             if (tem.sellPrice == minPrice) {
-                cell.location.textColor =[LCCollectionViewController hexColor:cTextRed_Color];
+                cell.priceLabel.textColor =[LVCalendarCollectionController hexColor:cTextRed_Color];
             } else {
-                cell.location.textColor = [LCCollectionViewController hexColor:cTextBlack_Color];
+                cell.priceLabel.textColor = [LVCalendarCollectionController hexColor:cTextBlack_Color];
             }
             if (isSelectedPath) {
-                cell.backgroundColor =[LCCollectionViewController hexColor:cTextRed_Color];
-                cell.location.textColor = [UIColor whiteColor];
-                cell.title.textColor = [UIColor whiteColor];
+                cell.backgroundColor =[LVCalendarCollectionController hexColor:cTextRed_Color];
+                cell.priceLabel.textColor = [UIColor whiteColor];
+                cell.dayLabel.textColor = [UIColor whiteColor];
             }
-            cell.location.text =  [self.markedLabels objectAtIndex:index];
+            cell.priceLabel.text =  [self.markedLabels objectAtIndex:index];
         } else {
             cell.backgroundColor = [UIColor whiteColor];
-            cell.title.textColor = [LCCollectionViewController hexColor:cTextLightGray_Color];
-            cell.location.text = nil;
+            cell.dayLabel.textColor = [LVCalendarCollectionController hexColor:cTextLightGray_Color];
+            cell.priceLabel.text = nil;
         }
     } else {
         cell.backgroundColor = [UIColor whiteColor];
-        cell.title.text = nil;
-        cell.location.text = nil;
+        cell.dayLabel.text = nil;
+        cell.priceLabel.text = nil;
     }
 
     return cell;
@@ -336,12 +336,12 @@ static NSString * const reuseIdentifier = @"CellReuseIdentifier";
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    MSDayColumnHeader *view;
+    LVCalendarSectionHeader *view;
     if (kind == UICollectionElementKindSectionHeader) {
         view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:MSDayColumnHeaderReuseIdentifier forIndexPath:indexPath];
     } else if(kind == UICollectionElementKindSectionFooter){
         view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:MSDayColumnFooterReuseIdentifier forIndexPath:indexPath];
-        view.backgroundColor = [LCCollectionViewController hexColor:cMainBackground_Color];
+        view.backgroundColor = [LVCalendarCollectionController hexColor:cMainBackground_Color];
     }
     return view;
 }
@@ -358,8 +358,8 @@ static NSString * const reuseIdentifier = @"CellReuseIdentifier";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
 {
-    MSEventCell *cell =  (MSEventCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    if (cell.location.text.length < 1) {
+    LVCalendarViewCell *cell =  (LVCalendarViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    if (cell.priceLabel.text.length < 1) {
         return;
     }
     

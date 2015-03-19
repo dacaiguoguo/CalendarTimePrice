@@ -20,13 +20,13 @@
 @property (nonatomic, assign) BOOL childOnSaleFlag;//是否儿童禁售
 
 @end
-@interface MSEventCell : UICollectionViewCell
-@property (nonatomic, strong) UILabel *title;
-@property (nonatomic, strong) UILabel *location;
+@interface LVCalendarViewCell : UICollectionViewCell
+@property (nonatomic, strong) UILabel *dayLabel;
+@property (nonatomic, strong) UILabel *priceLabel;
 
 @end
-@interface MSDayColumnHeader : UICollectionReusableView
+@interface LVCalendarSectionHeader : UICollectionReusableView
 @end
-@interface LCCollectionViewController : UICollectionViewController<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
+@interface LVCalendarCollectionController : UICollectionViewController<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 
 @end
