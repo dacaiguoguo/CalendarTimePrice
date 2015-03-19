@@ -25,6 +25,13 @@ NSString *const cTextLightGray_Color = @"aaaaaa64"; //三号字体灰色 170,170
 NSString *const cTextWhite_Color = @"ffffff64"; //四号字体白色 255,255,255
 NSString *const cTextRed_Color = @"d3077564"; //价格字体红色 211,7,117
 
+//主色调
+NSString *const cMainBackground_Color = @"f8f8f864"; //主背景色 248,248,248
+NSString *const cMainRed_Color = @"d3077564"; //主色调红色 211,7,117
+NSString *const cMainBlack_Color = @"3232325f"; //主色调黑色 50,50,50 透明度95%
+NSString *const cMainWhite_Color = @"ffffff64"; //主色调白色 255,255,255
+
+
 @implementation TimePrice
 + (TimePrice *)parseTimePriceJson:(NSDictionary *)jsonDictionary {
     TimePrice *timePrice = [[TimePrice alloc] init];
@@ -112,7 +119,7 @@ NSString *const cTextRed_Color = @"d3077564"; //价格字体红色 211,7,117
     float minPrice;
     NSArray *weekdays;
     NSIndexPath *selectedPath;
-
+    NSCalendar *gregorian;
 }
 static NSString * const reuseIdentifier = @"CellReuseIdentifier";
 
@@ -141,6 +148,8 @@ static NSString * const reuseIdentifier = @"CellReuseIdentifier";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    gregorian = [[NSCalendar alloc]
+                             initWithCalendarIdentifier:NSGregorianCalendar];
     weekdays = @[@"日",@"一",@"二",@"三",@"四",@"五",@"六"];
     self.collectionView.contentInset = UIEdgeInsetsMake(20, 0, 50, 0);
     [self.collectionView setShowsVerticalScrollIndicator:NO];
@@ -175,10 +184,22 @@ static NSString * const reuseIdentifier = @"CellReuseIdentifier";
     [self.collectionView registerClass:[MSEventCell class] forCellWithReuseIdentifier:reuseIdentifier];
     [self.collectionView registerClass:MSDayColumnHeader.class forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:MSDayColumnHeaderReuseIdentifier];
     [self.collectionView registerClass:MSDayColumnHeader.class forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:MSDayColumnFooterReuseIdentifier];
-
-
-    // Do any additional setup after loading the view.
 }
+
+//从NSDate 显示  年。。月。。日
+- (NSString *)yearDayFormDate:(NSDate *)date{
+    return [self stringFromDate:date format:@"yyyy年MM月dd日"];
+}
+
+- (NSString *)stringFromDate:(NSDate *)aDate format:(NSString *)aFormat {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setTimeZone:[NSTimeZone defaultTimeZone]];
+    [formatter setDateFormat:aFormat];
+    formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+    NSString *dateString = [formatter stringFromDate:aDate];
+    return [dateString length] > 0?dateString:@"";
+}
+
 
 -(void)markDates:(NSArray *)dates labels:(NSArray *)labels {
     self.markedDates = dates;
@@ -187,21 +208,30 @@ static NSString * const reuseIdentifier = @"CellReuseIdentifier";
 
 }
 -(void)reset {
-    NSCalendar *gregorian = [[NSCalendar alloc]
-                             initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *components =
     [gregorian components:(NSYearCalendarUnit | NSMonthCalendarUnit |
                            NSDayCalendarUnit) fromDate: _markedDates[0]];
+    [components setDay:1];
     self.currentMonth = [gregorian dateFromComponents:components]; //clean month
     firstWeekDay = [self.currentMonth firstWeekDayInMonth];
     todayBlock = [[NSDate date] day] + firstWeekDay - 1;
 }
 
--(int)numRows {
-    LVLog(@"dacaiguoguo:\n%s\n%ld",__func__,(long)[self.currentMonth numDaysInMonth]);
-    LVLog(@"dacaiguoguo:\n%s\n%ld",__func__,(long)[self.currentMonth firstWeekDayInMonth]-1);
+- (NSDate *)currentMonthAddSection:(NSInteger)section
+{
+    NSDateComponents *components =
+    [gregorian components:(NSYearCalendarUnit | NSMonthCalendarUnit |
+                           NSDayCalendarUnit) fromDate: self.currentMonth];
+    [components setMonth:components.month +section];
+    NSDate *ret = [gregorian dateFromComponents:components]; //clean month
+    return ret;
+}
 
-    float lastBlock = [self.currentMonth numDaysInMonth]+(firstWeekDay-1);
+-(int)numRows:(NSInteger )section {
+    NSDate *sectionMonth = [self currentMonthAddSection:section];
+    int sectionfirstWeekDay = (int)[sectionMonth firstWeekDayInMonth];
+
+    float lastBlock = [sectionMonth numDaysInMonth]+(sectionfirstWeekDay-1);
     return ceilf(lastBlock/7);
 }
 
@@ -213,27 +243,27 @@ static NSString * const reuseIdentifier = @"CellReuseIdentifier";
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 2;
+    return 20;
 }
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [self numRows]*7+8;
+    return [self numRows:section]*7+8;
 }
 
 - (BOOL)isContain:(NSDate*)dateTemp
 {
-    LVLog(@"%@ ==== %d",dateTemp ,[self.markedDatesSet containsObject:dateTemp] );
     return [self.markedDatesSet containsObject:dateTemp];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MSEventCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-
+    NSInteger section = indexPath.section;
+    NSDate *sectionMonth = [self currentMonthAddSection:section];
     if (indexPath.row < 8) {
         cell.backgroundColor = [UIColor whiteColor];
         if (indexPath.row == 0) {
-            cell.title.text = [NSString stringWithFormat:@"%d年%d月",(int)[self.currentMonth year],(int)[self.currentMonth month]];
+            cell.title.text = [NSString stringWithFormat:@"%d年%d月",(int)[sectionMonth year],(int)[sectionMonth month]];
             cell.location.text = nil;
             cell.title.textColor = [LCCollectionViewController hexColor:cTextBlack_Color];
         } else {
@@ -248,25 +278,22 @@ static NSString * const reuseIdentifier = @"CellReuseIdentifier";
         return cell;
 
     }
-    float lastBlock = [self.currentMonth numDaysInMonth]+([self.currentMonth firstWeekDayInMonth]-1);
-    NSInteger targetDate = indexPath.row-8+1;
+    int firstWeekDayInMonth = (int)([sectionMonth firstWeekDayInMonth]-1);
+    int numDaysInMonth =(int)[sectionMonth numDaysInMonth];
+    NSInteger targetDate = indexPath.row-8+1-firstWeekDayInMonth;
 
-    if (targetDate <= lastBlock) {
+    if (targetDate > 0 && targetDate <= numDaysInMonth) {
         cell.title.text = [NSString stringWithFormat:@"%zd",targetDate];
-        
         BOOL isSelectedPath = selectedPath && [selectedPath compare:indexPath] == NSOrderedSame;
-        
-
-        NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-        NSDateComponents *comps = [gregorian components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:self.currentMonth];
+        NSDateComponents *comps = [gregorian components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:sectionMonth];
         [comps setDay:targetDate];
         NSDate *dateTemp = [gregorian dateFromComponents:comps];
-        LVLog(@"%ld----%@",(long)targetDate,dateTemp);
+//        LVLog(@"%ld----%@",(long)targetDate,dateTemp);
         if ([self isContain:dateTemp]) {
             int index = (int)[self.markedDates indexOfObject:dateTemp];
             TimePrice * tem  = [mutArray objectAtIndex:index];
             cell.backgroundColor = [UIColor whiteColor];
-            if (targetDate %7 ==1||targetDate %7 ==0) {
+            if (indexPath.row %7 ==1||indexPath.row %7 ==0) {
                 cell.title.textColor =[LCCollectionViewController hexColor:cTextRed_Color];
             } else {
                 if (todayBlock == targetDate) {
@@ -294,7 +321,6 @@ static NSString * const reuseIdentifier = @"CellReuseIdentifier";
             }
             cell.location.text =  [self.markedLabels objectAtIndex:index];
         } else {
-            //        LVLog(@"dacaiguoguo:\n%s\n%@",__func__,[self formatIndexPath:indexPath]);
             cell.backgroundColor = [UIColor whiteColor];
             cell.title.textColor = [LCCollectionViewController hexColor:cTextLightGray_Color];
             cell.location.text = nil;
@@ -316,7 +342,7 @@ static NSString * const reuseIdentifier = @"CellReuseIdentifier";
         view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:MSDayColumnHeaderReuseIdentifier forIndexPath:indexPath];
     } else if(kind == UICollectionElementKindSectionFooter){
         view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:MSDayColumnFooterReuseIdentifier forIndexPath:indexPath];
-        view.backgroundColor = [LCCollectionViewController hexColor:cTextLightGray_Color];
+        view.backgroundColor = [LCCollectionViewController hexColor:cMainBackground_Color];
     }
     return view;
 }
