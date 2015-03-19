@@ -9,7 +9,7 @@
 #import "LCCollectionViewController.h"
 #import "UIView+AutoLayout.h"
 #import "NSDate+convenience.h"
-
+#import "AppDelegate.h"
 #ifdef DEBUG
 #define LVLog(format, ...) NSLog(format, ## __VA_ARGS__)
 #else
@@ -37,9 +37,7 @@ NSString *const cMainWhite_Color = @"ffffff64"; //主色调白色 255,255,255
     TimePrice *timePrice = [[TimePrice alloc] init];
     timePrice.sellPrice = [[jsonDictionary objectForKey:@"sellPrice"] floatValue];
     timePrice.specDate = jsonDictionary[@"specDate"];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setTimeZone:[NSTimeZone defaultTimeZone]];
-    [formatter setDateFormat:@"yyyy-MM-dd"];
+    NSDateFormatter *formatter = dateFormatterFromAppDelegate();
     timePrice.specDateTrue = [TimePrice dateFromString:timePrice.specDate formatter:formatter];
     timePrice.aperiodicDesc = jsonDictionary[@"aperiodicDesc"];
     timePrice.childSellPrice = [[jsonDictionary objectForKey:@"childSellPrice"] floatValue];
@@ -123,6 +121,10 @@ NSString *const cMainWhite_Color = @"ffffff64"; //主色调白色 255,255,255
 }
 static NSString * const reuseIdentifier = @"CellReuseIdentifier";
 
+
+
+
+
 + (UIColor *)hexColor:(NSString *)hexColor {
     if ([hexColor hasPrefix:@"#"]) {
         hexColor = [hexColor substringFromIndex:1];
@@ -192,10 +194,7 @@ static NSString * const reuseIdentifier = @"CellReuseIdentifier";
 }
 
 - (NSString *)stringFromDate:(NSDate *)aDate format:(NSString *)aFormat {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setTimeZone:[NSTimeZone defaultTimeZone]];
-    [formatter setDateFormat:aFormat];
-    formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+    NSDateFormatter *formatter = dateFormatterFromAppDelegate();
     NSString *dateString = [formatter stringFromDate:aDate];
     return [dateString length] > 0?dateString:@"";
 }
@@ -352,7 +351,7 @@ static NSString * const reuseIdentifier = @"CellReuseIdentifier";
         return CGSizeMake([[UIScreen mainScreen] bounds].size.width, 20);
     }
     CGSize cellSize = CGSizeZero;
-    cellSize.width = [[UIScreen mainScreen] bounds].size.width/7;
+    cellSize.width = floorf([[UIScreen mainScreen] bounds].size.width/7);
     cellSize.height = cellSize.width;
     return cellSize;
 }
@@ -363,7 +362,41 @@ static NSString * const reuseIdentifier = @"CellReuseIdentifier";
     if (cell.location.text.length < 1) {
         return;
     }
-    selectedPath = indexPath;
-    [collectionView reloadData];
+    
+    if (selectedPath) {
+        if ([selectedPath compare:indexPath] != NSOrderedSame) {
+            NSIndexPath *temp  = selectedPath;
+            selectedPath = indexPath;
+            [collectionView reloadItemsAtIndexPaths:@[temp,indexPath]];
+        } else {
+            
+        }
+    } else {
+        selectedPath = indexPath;
+        [collectionView reloadItemsAtIndexPaths:@[indexPath]];
+    }
+
 }
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    return UIEdgeInsetsZero;
+}
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 1;
+}
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 0;
+}
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
+{
+    return CGSizeZero;
+}
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
+{
+    return CGSizeMake(20, 20);
+}
+
 @end

@@ -7,7 +7,10 @@
 //
 
 #import "AppDelegate.h"
-
+NSDateFormatter *dateFormatterFromAppDelegate(){
+    AppDelegate *app = [UIApplication sharedApplication].delegate;
+    return app.dateFormatter;
+}
 @interface AppDelegate ()
 
 @end
@@ -42,4 +45,14 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (NSDateFormatter *)dateFormatter
+{
+    if (!_dateFormatter) {
+        _dateFormatter = [[NSDateFormatter alloc] init];
+        [_dateFormatter setTimeZone:[NSTimeZone defaultTimeZone]];
+        [_dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        _dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+    }
+    return _dateFormatter;
+}
 @end

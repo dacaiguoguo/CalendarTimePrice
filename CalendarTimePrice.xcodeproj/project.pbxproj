@@ -8,12 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		F2818D001ABAB58A00C61BBA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2818CFF1ABAB58A00C61BBA /* main.m */; };
-		F2818D061ABAB58A00C61BBA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2818D051ABAB58A00C61BBA /* ViewController.m */; };
 		F2818D0B1ABAB58A00C61BBA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2818D0A1ABAB58A00C61BBA /* Images.xcassets */; };
 		F2818D0E1ABAB58A00C61BBA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2818D0C1ABAB58A00C61BBA /* LaunchScreen.xib */; };
 		F2818D1A1ABAB58A00C61BBA /* CalendarTimePriceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2818D191ABAB58A00C61BBA /* CalendarTimePriceTests.m */; };
 		F2818D361ABAB5B900C61BBA /* cashRechargeSel.png in Resources */ = {isa = PBXBuildFile; fileRef = F2818D251ABAB5B900C61BBA /* cashRechargeSel.png */; };
-		F2818D371ABAB5B900C61BBA /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2818D271ABAB5B900C61BBA /* FirstViewController.m */; };
 		F2818D381ABAB5B900C61BBA /* greyButton700@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2818D281ABAB5B900C61BBA /* greyButton700@2x.png */; };
 		F2818D391ABAB5B900C61BBA /* greyButton700@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2818D291ABAB5B900C61BBA /* greyButton700@3x.png */; };
 		F2818D3A1ABAB5B900C61BBA /* LCCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2818D2B1ABAB5B900C61BBA /* LCCollectionViewController.m */; };
@@ -41,16 +39,12 @@
 		F2818CFA1ABAB58A00C61BBA /* CalendarTimePrice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalendarTimePrice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2818CFE1ABAB58A00C61BBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2818CFF1ABAB58A00C61BBA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		F2818D041ABAB58A00C61BBA /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		F2818D051ABAB58A00C61BBA /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		F2818D0A1ABAB58A00C61BBA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F2818D0D1ABAB58A00C61BBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		F2818D131ABAB58A00C61BBA /* CalendarTimePriceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalendarTimePriceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2818D181ABAB58A00C61BBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2818D191ABAB58A00C61BBA /* CalendarTimePriceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarTimePriceTests.m; sourceTree = "<group>"; };
 		F2818D251ABAB5B900C61BBA /* cashRechargeSel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cashRechargeSel.png; sourceTree = "<group>"; };
-		F2818D261ABAB5B900C61BBA /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		F2818D271ABAB5B900C61BBA /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		F2818D281ABAB5B900C61BBA /* greyButton700@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "greyButton700@2x.png"; sourceTree = "<group>"; };
 		F2818D291ABAB5B900C61BBA /* greyButton700@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "greyButton700@3x.png"; sourceTree = "<group>"; };
 		F2818D2A1ABAB5B900C61BBA /* LCCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCCollectionViewController.h; sourceTree = "<group>"; };
@@ -110,11 +104,7 @@
 			children = (
 				F2818D411ABAB5CA00C61BBA /* AppDelegate.h */,
 				F2818D421ABAB5CA00C61BBA /* AppDelegate.m */,
-				F2818D041ABAB58A00C61BBA /* ViewController.h */,
-				F2818D051ABAB58A00C61BBA /* ViewController.m */,
 				F2818D251ABAB5B900C61BBA /* cashRechargeSel.png */,
-				F2818D261ABAB5B900C61BBA /* FirstViewController.h */,
-				F2818D271ABAB5B900C61BBA /* FirstViewController.m */,
 				F2818D281ABAB5B900C61BBA /* greyButton700@2x.png */,
 				F2818D291ABAB5B900C61BBA /* greyButton700@3x.png */,
 				F2818D2A1ABAB5B900C61BBA /* LCCollectionViewController.h */,
@@ -211,6 +201,7 @@
 				TargetAttributes = {
 					F2818CF91ABAB58A00C61BBA = {
 						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = AJG2826637;
 					};
 					F2818D121ABAB58A00C61BBA = {
 						CreatedOnToolsVersion = 6.3;
@@ -271,9 +262,7 @@
 				F2818D3B1ABAB5B900C61BBA /* NSDate+convenience.m in Sources */,
 				F2818D3C1ABAB5B900C61BBA /* NSMutableArray+convenience.m in Sources */,
 				F2818D431ABAB5CA00C61BBA /* AppDelegate.m in Sources */,
-				F2818D061ABAB58A00C61BBA /* ViewController.m in Sources */,
 				F2818D401ABAB5B900C61BBA /* UIView+AutoLayout.m in Sources */,
-				F2818D371ABAB5B900C61BBA /* FirstViewController.m in Sources */,
 				F2818D001ABAB58A00C61BBA /* main.m in Sources */,
 				F2818D3A1ABAB5B900C61BBA /* LCCollectionViewController.m in Sources */,
 			);
@@ -393,10 +382,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				INFOPLIST_FILE = CalendarTimePrice/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "f5053ccf-121a-4d03-8be7-74f57053121a";
 			};
 			name = Debug;
 		};
@@ -404,10 +396,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = CalendarTimePrice/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

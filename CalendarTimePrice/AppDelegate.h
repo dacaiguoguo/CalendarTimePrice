@@ -11,7 +11,9 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property (strong, nonatomic) NSDateFormatter *dateFormatter;//yyyy-MM-dd
 
 @end
+
+NSDateFormatter *dateFormatterFromAppDelegate();
 

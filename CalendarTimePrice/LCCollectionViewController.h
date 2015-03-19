@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+
+
 @interface TimePrice : NSObject
 
 @property (nonatomic, strong) NSString *specDate;
